@@ -1,48 +1,96 @@
-# Predicting Five-Year Survival in Pediatric Leukemia Using Machine Learning
+# Five-Year Survival Analysis in Pediatric Leukemia Using Machine Learning
 
-## Overview
-This project investigates factors associated with five-year survival among pediatric leukemia patients using machine learning models. The goal is to identify significant predictors and develop predictive models to support clinical decision-making.
+## Project Overview
+This project analyzes clinical and laboratory factors associated with survival outcomes in pediatric leukemia patients using supervised machine learning models.  
 
-## Objectives
-- Analyze demographic and clinical variables مرتبط با بقای پنج‌ساله
-- Compare performance of multiple machine learning models
-- Identify key prognostic factors influencing survival
+The primary objective is to predict treatment outcomes (survival vs. death) and identify key prognostic variables.
 
-## Dataset
-The dataset includes clinical and demographic features of pediatric leukemia patients.  
-Target variable: **Five-year survival outcome (Binary classification)**
+---
 
-> Note: Patient data is anonymized and used strictly for research purposes.
+## Dataset Description
+- Total samples: 259 pediatric patients  
+- Features: Demographic, clinical, laboratory, metastasis indicators, organ involvement, and blood group  
+- Target variable: **Treatment Outcome** (0 = Death, 1 = Survival)
 
-## Methodology
-- Data preprocessing (handling missing values, encoding, scaling)
-- Feature selection / importance analysis
-- Model training and evaluation:
-  - Logistic Regression
-  - Random Forest
-  - Support Vector Machine
-  - Gradient Boosting / XGBoost
-- Evaluation metrics:
-  - Accuracy
-  - Precision
-  - Recall
-  - F1-score
-  - ROC-AUC
+### Key Variables
+- Gender
+- Age
+- Brain metastasis (binary)
+- Testicular metastasis (binary)
+- Splenomegaly
+- Hepatomegaly
+- Leukemia type (ALL / AML)
+- Blood group (One-Hot Encoded)
 
-## Results
-The comparative analysis demonstrates that ensemble-based models achieved superior predictive performance. Feature importance analysis highlights clinically relevant survival factors.
+---
+
+## Data Preprocessing
+- Encoding categorical variables
+- Binary transformation of metastasis and clinical indicators
+- One-hot encoding for blood groups
+- Removal of irrelevant features (IDs, dates, descriptive text)
+- Missing value handling
+- Feature scaling using `StandardScaler`
+- Train-test split (85% train / 15% test)
+
+---
+
+## Exploratory Data Analysis
+- Diagnosis distribution by gender
+- Mean age comparison between genders
+- Mortality comparison by gender
+- Survival comparison across age groups
+- Metastasis distribution analysis
+
+Visualization tools:
+- Matplotlib
+- Seaborn
+
+---
+
+## Machine Learning Models
+
+### 1. Decision Tree (Entropy)
+Accuracy: **0.718**
+
+### 2. Random Forest (Entropy)
+Accuracy: **0.795**
+
+### 3. CatBoost Classifier
+- Iterations: 1000
+- Learning rate: 0.1
+- Depth: 6  
+(Performance evaluated using LogLoss and validation set monitoring)
+
+---
+
+## Evaluation Metrics
+- Accuracy
+- Precision
+- Recall
+- F1-score
+- Classification Report
+
+---
 
 ## Technologies Used
 - Python
-- Pandas / NumPy
+- Pandas
+- NumPy
 - Scikit-learn
-- Matplotlib / Seaborn
+- CatBoost
+- Matplotlib
+- Seaborn
 
-## Future Work
-- Incorporating deep learning models
-- External validation on independent datasets
-- Deployment as a clinical decision-support tool
+---
+
+## Conclusion
+Ensemble-based methods (Random Forest, CatBoost) demonstrated improved predictive performance compared to a single Decision Tree model.  
+
+The findings suggest that clinical features such as metastasis indicators and leukemia subtype play a significant role in predicting survival outcomes.
+
+---
 
 ## Author
-Mehrrdad Hassanzadeh  
-M.Sc. in Medical Informatics
+Mehrdad Hassanzadeh  
+M.Sc. Medical Informatics
